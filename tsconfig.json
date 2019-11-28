@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es2017.object",
+      "es6",
+      "es5",
+      "dom",
+      "es2015.promise",
+      "es2015.core"
+    ],
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "rootDir": "src"
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.vue"
+  ],
+  "files": [
+    "node_modules/@scandltd/vue-injector/types/vue.d.ts",
+    "node_modules/@scandltd/vue-injector/types/vue.options.d.ts"
+  ]
+}
