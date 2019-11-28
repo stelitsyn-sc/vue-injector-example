@@ -10,7 +10,7 @@
   "dependencies": {
     "@scandltd/vue-injector": "3.2.7",
     "axios": "0.19.0",
-    "reflect-metadata": "0.1.13",
+    "core-js": "3.4.5",
     "rxjs": "6.5.3",
     "vue": "2.6.10",
     "vue-class-component": "7.1.0"
