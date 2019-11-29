@@ -1,35 +1,44 @@
 <template>
   <ol>
-    <li v-for="beer in beers">
+    <li v-bind:key="beer.id" v-for="beer in beers">
       <a href="#">{{ beer.name }}</a>
     </li>
   </ol>
 </template>
 
 <script lang="ts">
-import * as Vue from "vue";
+import Vue from "vue";
 import Component from "vue-class-component";
 import { Inject } from "@scandltd/vue-injector";
-import { Http, URL } from "../services/http";
+import { Subscription } from "rxjs";
 import { map } from "rxjs/operators";
+import { Http, URL } from "../services/http";
 
 @Component({
   props: {
     msg: String
   }
 })
-export default class BeerList extends Vue {
+class BeerList extends Vue {
   @Inject httpClient: Http;
 
-  beers: Array<{ name }> = [];
+  beers: Array<{ name: string }> = [];
+
+  subscription: Subscription;
 
   created() {
-    this.httpClient
+    this.subscription = this.httpClient
       .get(URL)
       .pipe(map(data => data))
       .subscribe(data => (this.beers = data));
   }
+
+  destroyed() {
+    this.subscription && this.subscription.unsubscribe();
+  }
 }
+
+export default BeerList;
 </script>
 
 <style scoped>

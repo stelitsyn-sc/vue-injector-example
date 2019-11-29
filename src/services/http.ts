@@ -1,21 +1,22 @@
-import { Injectable, Inject } from "@scandltd/vue-injector";
-import * as Observable from "rxjs/internal/observable/fromPromise";
-import { map } from "rxjs/operators";
+import { Injectable, Inject } from '@scandltd/vue-injector';
+import * as PromiseObservable from 'rxjs/internal/observable/fromPromise';
+import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/operators';
 
-import Client from "./client";
+import Client from './client';
 
 export const URL =
-  "https://api.punkapi.com/v2/beers?brewed_before=11-2012&abv_gt=6";
+  'https://api.punkapi.com/v2/beers?brewed_before=11-2012&abv_gt=6';
 
 @Injectable
 export class Http {
-  @Inject client: Client;
+  @Inject private client: Client;
 
-  observableFactory(promise): Observable<any> {
-    return Observable.fromPromise(promise).pipe(map(({ data }) => data));
+  private observableFactory<T>(promise): Observable<T> {
+    return PromiseObservable.fromPromise(promise).pipe(map(({ data }) => data));
   }
 
-  get(url, params = {}): Observable<any> {
-    return this.observableFactory(this.client.get(url, { params }));
+  get<T extends any>(url, params = {}): Observable<T> {
+    return this.observableFactory<T>(this.client.get(url, { params }));
   }
 }
