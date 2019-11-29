@@ -3,7 +3,7 @@ import "core-js/features/reflect";
 
 import Vue from "vue";
 import App from "./App.vue";
-import injector from "./services/setup";
+import injector from "./services";
 
 Vue.config.productionTip = false;
 
