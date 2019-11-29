@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@scandltd/vue-injector": "3.2.8",
+    "@scandltd/vue-injector": "3.2.10",
     "axios": "0.19.0",
     "core-js": "3.4.5",
     "rxjs": "6.5.3",
